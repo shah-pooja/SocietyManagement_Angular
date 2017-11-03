@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12" >
+        <div class="list-group-item clearfix"*ngFor="let v of vehicles">
+          <div class="pull-left">
+             <p class="list-group-item-text">{{v.vehicle}}</p> 
+            <p class="list-group-item-text">{{v.v_number}}</p>
+            <p class="list-group-item-text">{{v.color}}<p>
+          </div><br>
+          <img class="img-responsive" src="{{v.image}}" alt="no image" style="max-height:80px"> 
+        <button class="btn btn-primary" (click)="editVehicle(v._id)" [routerLink]="['../editmyvehicle/',v._id,v.vehicle,v.v_number,v.color]">Edit</button>
+        <button class="btn btn-danger" (click)="deleteVehicle(v._id)">Delete</button>
+        </div>   
+    </div>
+  </div>
+</div>
+  

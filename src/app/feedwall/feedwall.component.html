@@ -1,0 +1,14 @@
+<div class="container">
+  <h3>Feed Wall</h3>
+  <form [formGroup]="feedwallform">
+  <label> Post Something</label>
+  <textarea formControlName="status" class="form-control" cols="100" rows="2"></textarea>
+  <br>
+ <label> Share your images</label><input type="text" class="form-control"formControlName="img" placeholder="enter url">
+ <br>
+ <button class="btn btn-primary" type="submit" (click)="upload()">Post</button>
+ <button class="btn btn-primary" (click)="clear()">Clear</button>
+ <!-- <button class="btn btn-primary" (click)="showfeeds()">Show All Feeds</button> -->
+ <button class="btn btn-primary" routerLink="../show">Show All Feeds</button>
+  </form>
+</div>

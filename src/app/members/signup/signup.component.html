@@ -1,0 +1,83 @@
+
+    <div class="container">
+        <form [formGroup]="reactive" encType="multipart/form-data">
+          <div class="form-group">
+                First Name<input type="text" class="form-control" formControlName="fname" name="fname"placeholder="First Name">
+                <span class="help-block" *ngIf="!reactive.get('fname').valid && reactive.get('fname').touched">Name with only alphabets is allowed</span>
+              </div>
+          <div class="form-group">
+              Last Name<input type="text" class="form-control" formControlName="lname" name="lname" placeholder="Last Name">
+              <span class="help-block" *ngIf="!reactive.get('lname').valid && reactive.get('lname').touched">Name with only alphabets is allowed</span>
+            </div>
+          <div class="form-group">
+            Email<input type="email" class="form-control" formControlName="email" name="email" placeholder="Email">
+            <span class="help-block" *ngIf="!reactive.get('email').valid && reactive.get('email').touched">Email Structure should be"a@abc.com"</span>
+          </div>
+          <div class="form-group">
+            Password<input type="password" class="form-control" formControlName="pwd" name="pwd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <span class="help-block" *ngIf="!reactive.get('pwd').valid && reactive.get('pwd').touched ">Password must contain atleast one uppercase ,one lowercase ,number and special character and minimum length 8</span>
+          </div>
+          <div class="form-group">
+             Confirm Password<input type="password" class="form-control" formControlName="cpwd">
+             <span class="help-block" *ngIf="!(reactive.get('pwd').value === reactive.get('cpwd').value) && reactive.get('cpwd').touched">Password doesn't match with entered password</span>
+            </div>
+           <div class="form-group">
+              BirthDate<input type="date" class="form-control" formControlName="bday" name="bday" max="2017-10-31">
+            </div>
+            <div class="form-group">
+              Flat Purchase Date<input type="date" class="form-control" formControlName="date" name="date"  min="2017-10-31">
+            </div>
+            <div class="form-group">
+                Profile Pic<input type="file" accept="image/*" class="form-control" formControlName="img" name="img" (change)="upload($event)">
+            </div>
+             <div class="form-group">I agree to terms and conditions
+                <input type="checkbox" formControlName="check" >
+                <span class="help-block" *ngIf="!(reactive.get('check').value == true)">check the required</span>
+            </div>
+            <div class="form-group">
+                <!-- Flat Block<input type="text" class="form-control" formControlName="block" name="block" placeholder="e.g. A">
+                <span class="help-block" *ngIf="!reactive.get('block').valid && reactive.get('block').touched">Flat Block should be between A-F in capital</span> -->
+                Flat Block<select class="form-control" id="sel1" class="form-control" formControlName="block">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <!-- Flat Number<input type="number" class="form-control" formControlName="fnum" name="fnum" placeholder="enter flat no">
+              <span class="help-block" *ngIf="!reactive.get('fnum').valid && reactive.get('fnum').touched">Flat Number should be between 1-20 </span> -->
+              Flat Number<select class="form-control" id="sel1" formControlName="fnum">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+            <div class="form-group">
+                Mobile Number<input type="text" class="form-control" formControlName="phone" name="phone" placeholder="mobile number">
+                <span class="help-block" *ngIf="!reactive.get('phone').valid && reactive.get('phone').touched">Enter mobile number only in digits and length must be 10</span>
+              </div>
+            <div class="form-group">
+               <button class="btn btn-default" [disabled]="!reactive.valid"(click)="onsubmit()">Submit</button>
+            </div>
+        </form>
+        </div>

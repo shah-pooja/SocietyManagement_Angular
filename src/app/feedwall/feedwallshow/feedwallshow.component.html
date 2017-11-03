@@ -1,0 +1,30 @@
+<div class="container">
+<div class="row">
+    <div class="col-xs-12" >
+      <div class="list-group-item clearfix"*ngFor="let f of feeds">
+        <div class="pull-left">
+          <!-- <h4 class="list-group-item-heading">{{f.post}}</h4> -->
+          <p class="list-group-item-text">{{f.post}}</p>
+        </div><br>
+        <img class="img-responsive" src="{{f.image}}" alt="no image" style="max-height:80px">
+        <hr> 
+        <div class="col-xs-8">
+            <form [formGroup]="form">
+            <input type="text" formControlName="comment" class="form-control">
+            </form>  
+        </div>
+        <button class="btn btn-primary" (click)="comment(f._id)">Add Comment</button>
+        <button (click)="like(f._id)"  class=" btn btn-primary">Like</button>
+        <br>
+         Liked By: <div *ngFor="let l of f.like">
+          {{l.userID.fname}}
+        </div>
+        <hr>
+        Comments :<div *ngFor="let c of f.comment">
+          <p class="form-control"><em><strong>{{c.post}}</strong></em></p>
+            </div>
+        </div>
+      </div>   
+  </div>
+
+</div>

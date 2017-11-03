@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a class="navbar-brand">Society App</a>
+     
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a routerLink="./vehicles" routerLinkActive="active">Vehicle Management</a></li>
+            <li *ngIf="isAdmin === 1"><a routerLink="../maintenance" routerLinkActive="active">Maintenance Management</a></li>
+            <li class="dropdown"><a routerLink="./feedwall" routerLinkActive="active">Feed Wall</a>
+            </li>
+          </ul>
+      <button class="btn btn-primary logout" (click)="logout()">LogOut</button>
+          <!-- <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" appdropdown>
+              <a style="cursor:pointer" class="dropdown-toggle" role="button">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">routerLink="./feedwallshow"
+                <li><a style="cursor:pointer">Save</a></li>
+                <li><a style="cursor:pointer">Show</a></li>
+              </ul>
+           </li>
+         </ul> -->
+      </div>
+  </div>
+ </nav>
+ <h1>Please select your required options</h1>
+ <router-outlet></router-outlet>

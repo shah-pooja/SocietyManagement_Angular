@@ -1,0 +1,21 @@
+<div class="container">
+<form #f="ngForm">
+  <div class="form-group">
+  Email address
+      <input type="email" class="form-control" name="email" ngModel #email="ngModel" placeholder="Enter email" required>
+      <span style="color:red" class="help-block" *ngIf="!email.valid && email.touched"> Enter valid email</span>
+    </div>
+ <div class="form-group">
+  Password
+      <input type="password" class="form-control" name="pwd" ngModel #pwd="ngModel" placeholder="Password" required>
+       <span style="color:red" class="help-block" *ngIf="!pwd.valid && pwd.touched"> Enter password</span>
+    </div>
+  <button [disabled]="!f.valid" type="submit" (click)="login()"  class="btn btn-primary">Submit</button>
+  
+  <div *ngIf="error" class="alert alert-danger">Either of data is incorrect</div>
+</form>
+<br>
+<strong>If you are not an existing user </strong><a routerLink="/signup" class="btn btn-primary">SignUp</a>
+<br>
+<a routerLink="/forget" class="btn btn-danger">Forget Password</a>
+</div>       

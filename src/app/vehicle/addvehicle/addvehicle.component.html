@@ -1,0 +1,25 @@
+<div>
+    <form [formGroup]="reactive" encType="multipart/form-data">
+      <div class="form-group">
+          Type of Vehicle<select formControlName="vehicle" name="vehicle" class="form-control">
+              <option value="car">Car</option>
+              <option value="bike">Bike</option>
+              <option value="cycle">Cycle</option>
+              <option value="others">Others</option>
+            </select>
+            <span class="help-block" *ngIf="!reactive.get('vehicle').valid && reactive.get('vehicle').touched">Enter the type of vehicle</span>
+          </div>
+      <div class="form-group">
+          Vehicle Number<input type="text" class="form-control" formControlName="v_number" name="v_number" placeholder="e.g. GJ XX xxxx">
+          <span class="help-block" *ngIf="!reactive.get('v_number').valid && reactive.get('v_number').touched">Enter your vehicle number</span>
+        </div>
+      <div class="form-group">
+         Picture<input type="text" class="form-control" formControlName="image" name="image" placeholder="enter url">
+      </div>
+      <div class="form-group">
+         Color<input type="text" class="form-control" formControlName="color" name="color" placeholder="Enter color">
+       <span class="help-block" *ngIf="!reactive.get('color').valid && reactive.get('pwd').touched ">Enter color of your vehicle</span>
+      </div>
+      <button class="btn btn-primary" [disabled]="!reactive.valid" (click)="addvehicle()">Add Vehicle</button>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <!-- <input type="text" ng-repeat="item in v.vehicles | filter :vehicles ">
+        <li>{{item.vehicle}}</li> -->
+        <div class="col-xs-12" >
+          <div class="list-group-item clearfix" *ngFor="let v of vehicles" ng-model="vehicles">
+            <div class="pull-left">
+               <p class="list-group-item-text">{{v.vehicle}}</p> 
+              <p class="list-group-item-text">{{v.v_number}}</p>
+              <p class="list-group-item-text">{{v.color}}<p>
+            </div><br>
+            <img class="img-responsive" src="{{v.image}}" alt="no image" style="max-height:80px"> 
+          </div>   
+      </div>
+    </div>
+</div>
+    
