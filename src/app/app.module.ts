@@ -20,7 +20,7 @@ import { VehicleService } from "./vehicle/vehicleserver.service";
 import { FileSelectDirective } from "ng2-file-upload";
 import { ListmyvehicleComponent } from './vehicle/listmyvehicle/listmyvehicle.component';
 import { EditmyvehicleComponent } from './vehicle/editmyvehicle/editmyvehicle.component';
-
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import { EditmyvehicleComponent } from './vehicle/editmyvehicle/editmyvehicle.co
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    InfiniteScrollModule
   ],
   providers: [ServerService,FeedWallService,VehicleService],
   bootstrap: [AppComponent]

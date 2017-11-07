@@ -11,9 +11,9 @@ export class FeedWallService{
                 info,{headers:this.server.getToken()});
         }
 
-        showfeeds(){
+        showfeeds(p){
 
-            return this.http.get("http://localhost:3000/showfeed",{headers:this.server.getToken()});
+            return this.http.get("http://localhost:3000/showfeed/"+p,{headers:this.server.getToken()});
         }
 
         addcomments(comment:any){

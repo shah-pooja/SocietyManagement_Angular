@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FeedWallService } from "../feedwallserver.service";
 import { FormArray, FormGroup, FormControl, Validators } from "@angular/forms";
 import { ServerService } from "../../members/nodeserver.service";
-
+import { InfiniteScrollModule} from 'ngx-infinite-scroll';
 @Component({
   selector: 'app-feedwallshow',
   templateUrl: './feedwallshow.component.html',
@@ -11,6 +11,7 @@ import { ServerService } from "../../members/nodeserver.service";
 export class FeedwallshowComponent implements OnInit {
   form:FormGroup
   comments=[];
+  p:number=1;
   constructor(private service:FeedWallService,private server:ServerService ) { }
   count=0;
   feeds=[{}]
@@ -31,14 +32,24 @@ export class FeedwallshowComponent implements OnInit {
     //get feeds
       this.showfeeds()
   }
+  onScroll()
+  {
+    console.log("scrolled");
+    this.p+=1;
+    this.showfeeds();
+  }
 
   showfeeds()
   {
-    this.service.showfeeds().subscribe(
-      (response)=>{console.log(response.json()); 
-        this.feeds=response.json();
-        console.log(this.feeds)},
-       (error)=>{console.log(error)});
+    this.service.showfeeds(this.p).subscribe(
+      (response)=>{console.log(response.json());
+        if(response.status === 200) 
+          {
+            this.feeds=this.feeds.concat(response.json());
+            console.log(this.feeds)
+          }
+    },
+       (error)=>{console.log(error);alert("no more data")});
 
   }
   comment(id){
